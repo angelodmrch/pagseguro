@@ -1,0 +1,54 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: ID
+        disabled: true
+
+    status:
+        label: Status
+        type: dropdown
+        disabled: true
+        options:
+            0: Inicializado
+            1: Aguardando pagamento
+            2: Em análise
+            3: Paga
+            4: Disponível
+            5: Em disputa
+            6: Devolvida
+            7: Cancelada
+
+    user:
+        label: Usuario
+        type: partial
+
+    items:
+        label: Items
+        type: partial
+        path: items
+
+    total:
+        label: Total
+        type: text
+        disabled: true
+
+    transaction_id:
+        label: Transaction ID
+        type: text
+        disabled: true
+
+    created_at:
+        label: Criado em
+        type: datepicker
+        span: left
+        disabled: true
+
+    updated_at:
+        label: Atualizado em
+        type: datepicker
+        span: right
+        disabled: true
+        

@@ -1,0 +1,6 @@
+
+
+
+
+<?php $user = \RainLab\User\Models\User::find($value); ?>
+<br><a href="<?= Backend::url('rainlab/user/users/preview/'.$value) ?>"><?= $user->name ?></a>

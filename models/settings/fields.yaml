@@ -1,0 +1,73 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    env:
+        label: Ambiente
+        type: dropdown
+        options: 
+            sandbox: Sandbox
+            production: Production 
+
+    email:
+        label: E-mail
+        type: text
+
+    token_sandbox:
+        label: Token
+        type: text
+        trigger:
+            action: show
+            field: env
+            condition: value[sandbox]
+
+    token_production:
+        label: Token
+        type: text
+        trigger:
+            action: show
+            field: env
+            condition: value[production]
+
+    app_id_sandbox:
+        label: App Id
+        type: text
+        trigger:
+            action: show
+            field: env
+            condition: value[sandbox]
+
+    app_id_production:
+        label: App Id
+        type: text
+        trigger:
+            action: show
+            field: env
+            condition: value[production]
+
+    app_key_sandbox:
+        label: App Key
+        type: text
+        trigger:
+            action: show
+            field: env
+            condition: value[sandbox]
+
+    app_key_production:
+        label: App Key
+        type: text
+        trigger:
+            action: show
+            field: env
+            condition: value[production]
+
+    no_interest:
+        label: no_interest
+        type: text
+        default: 2
+
+    log:
+        label: Log
+        type: switch
+        default: 0

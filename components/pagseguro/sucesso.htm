@@ -1,0 +1,7 @@
+<h1>Pedido realizado com sucesso!</h1>
+
+<h2>{{ referencia }}</h2>
+
+{% if payment_link %}
+	<a href="{{ payment_link }}" target="_blank" class="btn btn-primary">Realizar Pagamento</a>
+{% endif %}

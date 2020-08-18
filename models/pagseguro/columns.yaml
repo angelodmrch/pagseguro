@@ -1,0 +1,37 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: id
+        type: number
+
+    user:
+        label: Usuario
+        type: number
+        select: name
+        relation: user
+
+    total:
+        label: total
+        type: text
+
+    status:
+        label: status
+        type: partial
+
+    transaction_id:
+        label: transaction id
+        type: text
+
+    created_at:
+        label: Criado em
+        type: datetime
+        format: d/m/Y h:i:s
+
+    updated_at:
+        label: Atualizado em
+        type: datetime
+        format: d/m/Y h:i:s
+        

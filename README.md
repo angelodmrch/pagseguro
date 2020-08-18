@@ -1,0 +1,1 @@
+# PagSeguro Integration Plugin

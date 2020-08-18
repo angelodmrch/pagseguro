@@ -1,0 +1,19 @@
+{
+    "name": "dmrch/pagseguro",
+    "type": "october-plugin",
+    "description": "PagSeguro Integration Plugin",
+    "homepage": "https://github.com/angelodmrch/pagseguro",
+    "keywords": ["october", "octobercms", "pagseguro","payment"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Angelo Demarchi",
+            "email": "angelodmrch@gmail.com"
+        },
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0"
+    },
+    "minimum-stability": "dev"
+}

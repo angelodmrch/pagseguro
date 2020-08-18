@@ -1,0 +1,74 @@
+{% if errors|length > 0 %}
+	<div class="alert alert-danger">
+		<p>Ocorreram erros de validação. Verifique o formulário</p>
+
+		
+			{% for error in errors.messages() %}
+			
+				{{ error[0] }}<br>
+
+			{% endfor %}
+		
+	</div>
+{% endif %}
+
+{{ form_ajax('PagSeguro::onCheckout') }}
+
+	<input type="hidden" name="cart_amount" id="cart_amount" value="{{ PagSeguro.getCartTotal() }}">
+	<input type="hidden" name="cart_nointerest" id="cart_nointerest" value="{{ PagSeguro.getNoInterest() }}">
+
+	<input type="text" name="senderName" placeholder="Nome" value="{{ form_value('senderName') }}">
+	<input type="text" name="senderCPF" placeholder="CPF">
+	<input type="text" name="senderAreaCode" placeholder="Codigo de area">
+	<input type="text" name="senderPhone" placeholder="Telefone">
+	<input type="text" name="senderEmail" placeholder="E-mail">
+	<input type="hidden" name="senderHash" id="senderHash">
+	<input type="hidden" name="creditCardToken" id="creditCardToken">
+	<input type="hidden" name="shippingAddressRequired" value="false">
+
+	<input type="hidden" name="paymentMethod" id="paymentMethod" value="creditCard">
+
+	<div id="paymentMethods">		
+
+		<a href="javascript:void(0)" onclick="setPaymentMethod('boleto')">Boleto</a>
+		<a href="javascript:void(0)" onclick="setPaymentMethod('creditCard')">CC</a>
+		<a href="javascript:void(0)" onclick="setPaymentMethod('eft')">Debito</a>
+
+		<div class="pmethod boleto"  style="display: none;">
+			BOLETO
+		</div>
+
+		<div class="pmethod creditCard">
+			CC
+			<input type="text" name="brand" id="brand" placeholder="Bandeira">
+			<input type="text" name="cardNumber" id="cardNumber" placeholder="Numero do cartão">
+			<input type="text" name="cvv" id="cvv" placeholder="cvv">
+			<input type="text" name="expirationMonth" id="expirationMonth" placeholder="mes">
+			<input type="text" name="expirationYear" id="expirationYear" placeholder="ano">
+
+			<input type="text" name="creditCardHolderName" id="creditCardHolderName" placeholder="Nome">
+			<input type="text" name="creditCardHolderCPF" id="creditCardHolderCPF" placeholder="CPF">
+			<input type="text" name="creditCardHolderBirthDate" id="creditCardHolderBirthDate" placeholder="Aniversario">
+
+
+			<select name="installmentQuantity" id="installmentQuantity"></select>
+
+		</div>
+
+		<div class="pmethod eft" style="display: none;">
+			Debito
+			<select name="bankName" id="bankName"></select>
+		</div>
+
+	</div>
+
+
+	<input type="submit" class="btn btn-primary" value="Finalizar Pedido">
+{{ form_close() }}
+
+
+
+{% put scripts %}
+	<script type="text/javascript" src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+	<script type="text/javascript" src="{{ url('plugins/dmrch/pagseguro/assets/js/checkout.js') }}"></script>
+{% endput %}

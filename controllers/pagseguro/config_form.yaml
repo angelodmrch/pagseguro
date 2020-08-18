@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Pagseguro
+
+# Model Form Field configuration
+form: $/dmrch/pagseguro/models/pagseguro/fields.yaml
+
+# Model Class name
+modelClass: Dmrch\PagSeguro\Models\Pagseguro
+
+# Default redirect location
+defaultRedirect: dmrch/pagseguro/pagseguro
+
+# Create page
+create:
+    title: Create Pagseguro
+    redirect: dmrch/pagseguro/pagseguro/update/:id
+    redirectClose: dmrch/pagseguro/pagseguro
+
+# Update page
+update:
+    title: Edit Pagseguro
+    redirect: dmrch/pagseguro/pagseguro
+    redirectClose: dmrch/pagseguro/pagseguro
+
+# Preview page
+preview:
+    title: Preview Pagseguro
