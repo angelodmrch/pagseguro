@@ -25,7 +25,7 @@ class Plugin extends PluginBase
         return [
             'name'        => 'PagSeguro',
             'description' => 'No description provided yet...',
-            'author'      => 'Dmrch',
+            'author'      => 'Angelo Demarchi',
             'icon'        => 'icon-credit-card-alt'
         ];
     }
@@ -106,7 +106,7 @@ class Plugin extends PluginBase
             'settings' => [
                 'label'       => 'PagSeguro',
                 'description' => 'Manage PagSeguro settings.',
-                'category'    => 'PagSeguro',
+                'category'    => 'Geral',
                 'icon'        => 'icon-cog',
                 'class'       => 'Dmrch\PagSeguro\Models\Settings',
                 'order'       => 500,
