@@ -51,7 +51,7 @@ class Cart extends ComponentBase
         $item = input('item');     
 
         if (array_key_exists($item['id'], $cart)) {
-            unset($cart[$item['id']);          
+            unset($cart[$item['id']]);          
         }
 
         Session::put('cart_items',$cart);
