@@ -136,35 +136,29 @@ class Pagseguro extends ComponentBase
                 $pagseguro->save();
 
                 $data = array('senderName' => $_POST['senderName'],
-                        'senderCPF' => $_POST['senderCPF'],
-                        'senderAreaCode' => $_POST['senderAreaCode'],
-                        'senderPhone' => $_POST['senderPhone'],
-                        'senderEmail' => $_POST['senderEmail'],
-                        'senderHash' => $_POST['senderHash'],
-                        'paymentMode' => 'default',
-                        'notificationURL' =>  Request::getBaseUrl().'/pagseguro/notification',
-                        'reference' => $pagseguro->id,
-                        'paymentMethod' => $_POST['paymentMethod'],              
+                    'senderCPF' => $_POST['senderCPF'],
+                    'senderAreaCode' => $_POST['senderAreaCode'],
+                    'senderPhone' => $_POST['senderPhone'],
+                    'senderEmail' => $_POST['senderEmail'],
+                    'senderHash' => $_POST['senderHash'],
+                    'paymentMode' => 'default',
+                    'notificationURL' =>  Request::getBaseUrl().'/pagseguro/notification',
+                    'reference' => $pagseguro->id,
+                    'paymentMethod' => $_POST['paymentMethod'],              
 
-                        'receiverEmail' => $this->credentials()['email'],
-                        'currency' => 'BRL',
-                        
-
-                        'extraAmount' => '0.00',
-
-
-                        'shippingAddressRequired' => 'False',  
-
-                    );
+                    'receiverEmail' => $this->credentials()['email'],
+                    'currency' => 'BRL',
+                    'extraAmount' => '0.00',
+                    'shippingAddressRequired' => 'False',  
+                );
 
 
-                foreach (Session::get('cart_items') as $key => $value) {                    
-                    $data['itemId'.$key+1] = $value->id;
-                    $data['itemDescription'.$key+1] = $value->nome;
-                    $data['itemAmount'.$key+1] = $value->amount;
-                    $data['itemQuantity'.$key+1] = $value->qty;
+                foreach (array_values(Session::get('cart_items')) as $key => $value) {   
+                    $data['itemId'.$key] = $value->id;
+                    $data['itemDescription'.$key] = $value->name;
+                    $data['itemAmount'.$key] = number_format($value->price, 2, '.', '');
+                    $data['itemQuantity'.$key] = $value->quantity;
                 }
-
 
                 if ($_POST['paymentMethod'] == 'eft') {
                     $data['bankName'] = $_POST['bankName'];
