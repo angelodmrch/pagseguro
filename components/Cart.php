@@ -1,6 +1,7 @@
 <?php namespace Dmrch\PagSeguro\Components;
 
 use Cms\Classes\ComponentBase;
+use Session;
 
 class Cart extends ComponentBase
 {
@@ -19,6 +20,7 @@ class Cart extends ComponentBase
 
     public function onClear(){
         Session::forget('cart_items');
+        Session::forget('cart_total');
     }
 
     public function onAdd(){
@@ -40,7 +42,7 @@ class Cart extends ComponentBase
             $product->quantity = 1;
         }
 
-        $cart[$product->id] =  $product;
+        $cart[$product->id] = $product;
 
         Session::put('cart_items',$cart);
     }
